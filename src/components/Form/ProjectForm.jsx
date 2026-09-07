@@ -1,3 +1,4 @@
+import React from 'react'
 import { useState } from 'react'
 import { ArrowRight, Lock } from 'lucide-react'
 import ProjectTypeSelector from './ProjectTypeSelector'

@@ -11,14 +11,14 @@ function App() {
   const [resultado, setResultado] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
   const handleSubmit = (formData) => {
     console.log('Enviando datos del formulario:', formData)
     setLoading(true)
     setError('')
     setResultado(null)
 
-    fetch('http://localhost:3000/api/calcular', {
+    fetch(`${API_URL}/api/calcular`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
