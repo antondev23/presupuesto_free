@@ -1,13 +1,11 @@
-
-const EMPRESA_LINKS = ['Inicio', 'Cómo funciona', 'Ejemplos', 'Precios']
-const LEGAL_LINKS = ['Términos de uso', 'Política de privacidad', 'Contacto']
+const LEGAL_LINKS = ['Política de privacidad', 'Contacto']
 
 function Footer() {
   return (
-    <footer className="bg-[#0A0E1A] border-t border-white/5">
+    <footer className="bg-[#0A0E1A] border-t border-white/5 ">
       <div className="max-w-7xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-12">
         {/* Logo + tagline */}
-        <div>
+        <div className="md:col-span-3 flex flex-col items-center text-center">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-green-500 grid grid-cols-2 gap-0.5 p-1.5">
               <span className="bg-[#0A0E1A] rounded-sm" />
@@ -15,39 +13,16 @@ function Footer() {
               <span className="bg-[#0A0E1A] rounded-sm" />
               <span className="bg-[#0A0E1A] rounded-sm" />
             </div>
-            <span className="text-white font-bold text-lg">PresupuestoApp</span>
+
+            <span className="text-white font-bold text-lg">
+              PresupuestoApp
+            </span>
           </div>
+
           <p className="mt-4 text-sm text-slate-400 max-w-xs">
-            La herramienta líder para calcular presupuestos de proyectos digitales de forma rápida y precisa.
+            La herramienta líder para calcular presupuestos de proyectos
+            digitales de forma rápida y precisa.
           </p>
-        </div>
-
-        {/* Empresa */}
-        <div>
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Empresa</h3>
-          <ul className="space-y-3">
-            {EMPRESA_LINKS.map((link) => (
-              <li key={link}>
-                <a href="#" className="text-sm text-slate-300 hover:text-white transition-colors">
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Legal */}
-        <div>
-          <h3 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Legal</h3>
-          <ul className="space-y-3">
-            {LEGAL_LINKS.map((link) => (
-              <li key={link}>
-                <a href="#" className="text-sm text-slate-300 hover:text-white transition-colors">
-                  {link}
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
 

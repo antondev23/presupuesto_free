@@ -1,5 +1,5 @@
 function Hero() {
-  const checks = ['Sin registro', 'Exporta en PDF', '+5,000 proyectos calculados']
+  const checks = ['Sin registro', '+5,000 proyectos calculados']
 
   return (
     <section className="relative overflow-hidden">

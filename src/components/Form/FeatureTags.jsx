@@ -7,28 +7,43 @@ const FUNCIONALIDADES = [
   'Multiidioma',
   'Analíticas',
   'Diseño responsivo',
+  'Otros',
 ]
 
-function FeatureTags({ selected, onToggle }) {
+function FeatureTags({ selected, onToggle, otroValue, onOtroChange }) {
+  const isOtroSelected = selected.includes('Otros')
+
   return (
-    <div className="flex flex-wrap gap-2">
-      {FUNCIONALIDADES.map((item) => {
-        const isSelected = selected.includes(item)
-        return (
-          <button
-            key={item}
-            type="button"
-            onClick={() => onToggle(item)}
-            className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
-              isSelected
-                ? 'border-green-500 bg-green-500 text-white'
-                : 'border-gray-200 text-gray-600 hover:border-gray-300'
-            }`}
-          >
-            {item}
-          </button>
-        )
-      })}
+    <div>
+      <div className="flex flex-wrap gap-2">
+        {FUNCIONALIDADES.map((item) => {
+          const isSelected = selected.includes(item)
+          return (
+            <button
+              key={item}
+              type="button"
+              onClick={() => onToggle(item)}
+              className={`rounded-full border px-4 py-1.5 text-sm transition-colors ${
+                isSelected
+                  ? 'border-green-500 bg-green-500 text-white'
+                  : 'border-gray-200 text-gray-600 hover:border-gray-300'
+              }`}
+            >
+              {item}
+            </button>
+          )
+        })}
+      </div>
+
+      {isOtroSelected && (
+        <input
+          type="text"
+          value={otroValue}
+          onChange={(e) => onOtroChange(e.target.value)}
+          placeholder="Especifica cuál..."
+          className="mt-3 w-full rounded-lg border border-gray-200 px-4 py-2 text-sm focus:border-green-500 focus:outline-none"
+        />
+      )}
     </div>
   )
 }

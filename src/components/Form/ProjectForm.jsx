@@ -14,6 +14,7 @@ function ProjectForm({ onSubmit, loading }) {
     nombreCompleto: '',
     email: '',
   })
+  const [otroValue, setOtroValue] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -42,7 +43,11 @@ function ProjectForm({ onSubmit, loading }) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    onSubmit(formData)
+    const dataToSend = {
+      ...formData,
+      otraFuncionalidad: formData.funcionalidades.includes('Otros') ? otroValue : '',
+    }
+    onSubmit(dataToSend)
   }
 
   return (
@@ -69,7 +74,12 @@ function ProjectForm({ onSubmit, loading }) {
           <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
             Funcionalidades clave
           </label>
-          <FeatureTags selected={formData.funcionalidades} onToggle={handleFuncionalidadToggle} />
+          <FeatureTags
+            selected={formData.funcionalidades}
+            onToggle={handleFuncionalidadToggle}
+            otroValue={otroValue}
+            onOtroChange={setOtroValue}
+          />
         </div>
 
         <div>
@@ -81,7 +91,7 @@ function ProjectForm({ onSubmit, loading }) {
 
         <div>
           <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
-            Descripción adicional
+            Dale contexto a la IA (opcional)
           </label>
           <textarea
             name="descripcion"

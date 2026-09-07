@@ -14,11 +14,7 @@ function Navbar() {
         </div>
 
         {/* Links */}
-        <div className="hidden md:flex items-center gap-8 text-sm text-slate-300">
-          <a href="#" className="hover:text-white transition-colors">Cómo funciona</a>
-          <a href="#" className="hover:text-white transition-colors">Ejemplos</a>
-          <a href="#" className="hover:text-white transition-colors">Precios</a>
-        </div>
+        
 
         {/* CTAs */}
         <div className="flex items-center gap-3">
