@@ -39,6 +39,7 @@ function ProjectTypeSelector({
                   ? 'border-green-500 bg-green-50 text-green-700'
                   : 'border-gray-200 text-gray-600 hover:border-gray-300'
               }`}
+              required
             >
               <Icon className="w-5 h-5" />
               {tipoValue === 'otro' && otroValueConfirmado ? otroValueConfirmado : label}

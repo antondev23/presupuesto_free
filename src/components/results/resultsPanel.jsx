@@ -27,7 +27,7 @@ const ResultsPanel = ({ results, loading, onClose }) => {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/50 p-4 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain bg-slate-950/50 p-4 backdrop-blur-sm"
       role="presentation"
       onMouseDown={closeOnBackdrop}
     >
@@ -35,7 +35,7 @@ const ResultsPanel = ({ results, loading, onClose }) => {
         role="dialog"
         aria-modal="true"
         aria-labelledby="results-title"
-        className="relative w-full max-w-xl rounded-3xl bg-white p-8 text-left shadow-2xl"
+        className="relative max-h-[calc(100svh-2rem)] w-full max-w-xl overflow-y-auto overscroll-contain rounded-3xl bg-white p-8 text-left shadow-2xl"
       >
         {isLoading ? (
           <div className="flex min-h-64 flex-col items-center justify-center gap-6 text-center">

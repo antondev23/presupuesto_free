@@ -97,40 +97,43 @@ function ProjectForm({ onSubmit, loading }) {
           <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
             Experiencia en proyectos digitales
           </label>
-          <div className="flex items-center gap-4 justify-around">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experiencia"
-                value="principiante"
-                className="accent-green-600"
-                checked={formData.experiencia === 'principiante'}
-                onChange={handleChange}
-              />
-              <span className="text-sm text-gray-700">Principiante</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experiencia"
-                value="intermedio"
-                className="accent-green-600"
-                checked={formData.experiencia === 'intermedio'}
-                onChange={handleChange}
-              />
-              <span className="text-sm text-gray-700">Intermedio</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="experiencia"
-                value="avanzado"
-                className="accent-green-600"
-                checked={formData.experiencia === 'avanzado'}
-                onChange={handleChange}
-              />
-              <span className="text-sm text-gray-700">Avanzado</span>
-            </label>
+          <div className="flex items-center gap-4 justify-around ">
+            <form action="" required >
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="experiencia"
+                  value="principiante"
+                  className="accent-green-600"
+                  checked={formData.experiencia === 'principiante'}
+                  onChange={handleChange}
+                />
+                <span className="text-sm text-gray-700">Principiante</span>
+              </label>
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="experiencia"
+                  value="intermedio"
+                  className="accent-green-600"
+                  checked={formData.experiencia === 'intermedio'}
+                  onChange={handleChange}
+                />
+                <span className="text-sm text-gray-700">Intermedio</span>
+              </label>
+              <label className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="experiencia"
+                  value="avanzado"
+                  className="accent-green-600"
+                  checked={formData.experiencia === 'avanzado'}
+                  onChange={handleChange}
+                />
+                <span className="text-sm text-gray-700">Avanzado</span>
+              </label>
+            </form>
+
           </div>
         </div>
         <div>
@@ -181,7 +184,7 @@ function ProjectForm({ onSubmit, loading }) {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        {/* <div className="grid grid-cols-2 gap-4">
           <div>
             <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
               Nombre completo
@@ -206,7 +209,7 @@ function ProjectForm({ onSubmit, loading }) {
               className="w-full border border-gray-200 rounded-xl p-3 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500/30 focus:border-green-500"
             />
           </div>
-        </div>
+        </div> */}
 
         <button
           type="submit"
