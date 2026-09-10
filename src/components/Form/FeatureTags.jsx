@@ -10,8 +10,17 @@ const FUNCIONALIDADES = [
   'Otros',
 ]
 
-function FeatureTags({ selected, onToggle, otroValue, onOtroChange }) {
+function FeatureTags({ selected, onToggle, otroValue, onOtroChange, onOtroConfirm }) {
   const isOtroSelected = selected.includes('Otros')
+  const customFeatures = selected.filter((item) => !FUNCIONALIDADES.includes(item))
+
+  const handleOtherKeyDown = (event) => {
+    if (event.key !== 'Enter') return
+
+    event.preventDefault()
+    onOtroConfirm(otroValue)
+    onOtroChange('')
+  }
 
   return (
     <div>
@@ -33,6 +42,14 @@ function FeatureTags({ selected, onToggle, otroValue, onOtroChange }) {
             </button>
           )
         })}
+        {customFeatures.map((item) => (
+          <span
+            key={item}
+            className="rounded-full border border-green-500 bg-green-500 px-4 py-1.5 text-sm text-white"
+          >
+            {item}
+          </span>
+        ))}
       </div>
 
       {isOtroSelected && (
@@ -40,6 +57,7 @@ function FeatureTags({ selected, onToggle, otroValue, onOtroChange }) {
           type="text"
           value={otroValue}
           onChange={(e) => onOtroChange(e.target.value)}
+          onKeyDown={handleOtherKeyDown}
           placeholder="Especifica cuál..."
           className="mt-3 w-full rounded-lg border border-gray-200 px-4 py-2 text-sm focus:border-green-500 focus:outline-none"
         />

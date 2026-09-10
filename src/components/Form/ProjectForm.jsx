@@ -7,6 +7,7 @@ import TimelineSelector from './TimelineSelector'
 
 function ProjectForm({ onSubmit, loading }) {
   const [formData, setFormData] = useState({
+    experiencia: '',
     tipoProyecto: '',
     funcionalidades: [],
     tiempoProyecto: '',
@@ -15,6 +16,8 @@ function ProjectForm({ onSubmit, loading }) {
     email: '',
   })
   const [otroValue, setOtroValue] = useState('')
+  const [otroTipoProyecto, setOtroTipoProyecto] = useState('')
+  const [otroTipoProyectoConfirmado, setOtroTipoProyectoConfirmado] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -23,6 +26,15 @@ function ProjectForm({ onSubmit, loading }) {
 
   const handleTipoChange = (value) => {
     setFormData((prev) => ({ ...prev, tipoProyecto: value }))
+  }
+
+  const handleOtroTipoProyecto = (value) => {
+    const tipoPersonalizado = value.trim()
+
+    if (!tipoPersonalizado) return
+
+    setOtroTipoProyecto(tipoPersonalizado)
+    setOtroTipoProyectoConfirmado(tipoPersonalizado)
   }
 
   const handleTiempoChange = (value) => {
@@ -41,11 +53,29 @@ function ProjectForm({ onSubmit, loading }) {
     })
   }
 
+  const handleOtraFuncionalidad = (value) => {
+    const funcionalidad = value.trim()
+
+    if (!funcionalidad) return
+
+    setFormData((prev) => ({
+      ...prev,
+      funcionalidades: prev.funcionalidades.includes(funcionalidad)
+        ? prev.funcionalidades
+        : [...prev.funcionalidades, funcionalidad],
+    }))
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    const tipoProyectoFinal = formData.tipoProyecto === 'otro'
+      ? otroTipoProyecto.trim()
+      : formData.tipoProyecto
     const dataToSend = {
       ...formData,
+      tipoProyecto: tipoProyectoFinal || 'otro',
       otraFuncionalidad: formData.funcionalidades.includes('Otros') ? otroValue : '',
+      otroTipoProyecto: formData.tipoProyecto === 'otro' ? tipoProyectoFinal : '',
     }
     onSubmit(dataToSend)
   }
@@ -65,9 +95,56 @@ function ProjectForm({ onSubmit, loading }) {
       <form onSubmit={handleSubmit} className="mt-8 space-y-8">
         <div>
           <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
+            Experiencia en proyectos digitales
+          </label>
+          <div className="flex items-center gap-4 justify-around">
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="experiencia"
+                value="principiante"
+                className="accent-green-600"
+                checked={formData.experiencia === 'principiante'}
+                onChange={handleChange}
+              />
+              <span className="text-sm text-gray-700">Principiante</span>
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="experiencia"
+                value="intermedio"
+                className="accent-green-600"
+                checked={formData.experiencia === 'intermedio'}
+                onChange={handleChange}
+              />
+              <span className="text-sm text-gray-700">Intermedio</span>
+            </label>
+            <label className="flex items-center gap-2">
+              <input
+                type="radio"
+                name="experiencia"
+                value="avanzado"
+                className="accent-green-600"
+                checked={formData.experiencia === 'avanzado'}
+                onChange={handleChange}
+              />
+              <span className="text-sm text-gray-700">Avanzado</span>
+            </label>
+          </div>
+        </div>
+        <div>
+          <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
             Tipo de proyecto
           </label>
-          <ProjectTypeSelector value={formData.tipoProyecto} onChange={handleTipoChange} />
+          <ProjectTypeSelector
+            value={formData.tipoProyecto}
+            onChange={handleTipoChange}
+            otroValue={otroTipoProyecto}
+            onOtroChange={setOtroTipoProyecto}
+            onOtroConfirm={handleOtroTipoProyecto}
+            otroValueConfirmado={otroTipoProyectoConfirmado}
+          />
         </div>
 
         <div>
@@ -79,6 +156,7 @@ function ProjectForm({ onSubmit, loading }) {
             onToggle={handleFuncionalidadToggle}
             otroValue={otroValue}
             onOtroChange={setOtroValue}
+            onOtroConfirm={handleOtraFuncionalidad}
           />
         </div>
 

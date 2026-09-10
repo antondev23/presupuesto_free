@@ -3,6 +3,14 @@ import { CoreSpinLoader } from '../ui/core-spin-loader'
 
 const ResultsPanel = ({ results, loading, onClose }) => {
   const isLoading = loading || !results
+  const presupuesto = results?.presupuesto || {}
+  const tiempoEstimado = results?.tiempoEstimado || {}
+  const incluye = results?.incluye?.length
+    ? results.incluye
+    : ['Revisión del alcance del proyecto']
+  const consejos = results?.consejos?.length
+    ? results.consejos
+    : ['Confirma el alcance y los entregables antes de comenzar.']
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -49,17 +57,32 @@ const ResultsPanel = ({ results, loading, onClose }) => {
             >
               &times;
             </button>
-            <h2 id="results-title" className="mb-4 pr-10 text-2xl font-bold text-gray-700">Resultados del presupuesto</h2>
+            <h2 id="results-title" className="mb-4 pr-10 text-2xl font-bold text-gray-800">
+              {results.titulo || '✨ Estimación del proyecto'}
+            </h2>
             <p className="mb-6 text-sm text-gray-500">
-              Basado en la información proporcionada, esta es la estimación de tu proyecto.
+              {results.resumen || 'Basado en la información proporcionada, esta es la estimación de tu proyecto.'}
             </p>
             <div className="space-y-4">
-              <p className="text-xl font-semibold text-gray-700">Precio mínimo: <span className="text-green-600">${results.precioMinimo}</span></p>
-              <p className="text-xl font-semibold text-gray-700">Precio recomendado: <span className="text-green-600">${results.precioRecomendado}</span></p>
-              <p className="text-xl font-semibold text-gray-700">Precio máximo: <span className="text-green-600">${results.precioMaximo}</span></p>
-              <p className="text-xl font-semibold text-gray-700">Tiempo estimado: <span className="text-blue-600">{results.horasEstimadas} horas</span></p>
-              <p className="text-sm text-gray-600"><strong>Justificación:</strong> {results.justificacion}</p>
-              <p className="text-sm text-gray-600"><strong>Detalles:</strong> {results.detallesAdicionales}</p>
+              <p className="text-xl font-semibold text-gray-700">💰 Desde: <span className="text-green-600">${presupuesto.minimo}</span></p>
+              <p className="text-xl font-semibold text-gray-700">⭐ Recomendado: <span className="text-green-600">${presupuesto.recomendado}</span></p>
+              <p className="text-xl font-semibold text-gray-700">📈 Hasta: <span className="text-green-600">${presupuesto.maximo}</span></p>
+              <p className="text-xl font-semibold text-gray-700">⏱️ Tiempo estimado: <span className="text-blue-600">{tiempoEstimado.horas} horas</span></p>
+              <p className="text-sm text-gray-600">{tiempoEstimado.descripcion || 'Tiempo sujeto al alcance final.'}</p>
+              <p className="text-sm text-gray-600"><strong>Justificación:</strong> {results.justificacion || 'Estimación basada en los datos indicados.'}</p>
+              <div className="text-sm text-gray-600">
+                <strong>✅ Incluye:</strong>
+                <ul className="mt-2 list-disc space-y-1 pl-5">
+                  {incluye.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+              <div className="text-sm text-gray-600">
+                <strong>💡 Consejos:</strong>
+                <ul className="mt-2 list-disc space-y-1 pl-5">
+                  {consejos.map((consejo) => <li key={consejo}>{consejo}</li>)}
+                </ul>
+              </div>
+              <p className="text-sm text-gray-600"><strong>🚀 Siguiente paso:</strong> {results.siguientePaso || 'Define el alcance final y confirma los entregables.'}</p>
             </div>
             <div className="mt-8 flex justify-end">
               <button
