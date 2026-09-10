@@ -33,14 +33,14 @@ function Footer() {
             © {new Date().getFullYear()} PresupuestoApp. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-4">
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
-              X
-            </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
+            <a href="https://www.instagram.com/anton.ort03/" className="text-slate-400 hover:text-white transition-colors">
               Instagram
             </a>
-            <a href="#" className="text-slate-400 hover:text-white transition-colors">
+            <a href="https://www.linkedin.com/in/antonio-ortega-43b3952b4" className="text-slate-400 hover:text-white transition-colors">
               LinkedIn
+            </a>
+            <a href="https://www.tiktok.com/@antonort23" className="text-slate-400 hover:text-white transition-colors">
+              tiktok
             </a>
           </div>
         </div>
