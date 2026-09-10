@@ -97,43 +97,40 @@ function ProjectForm({ onSubmit, loading }) {
           <label className="block text-xs font-bold text-gray-500 uppercase tracking-wide mb-3">
             Experiencia en proyectos digitales
           </label>
-          <div className="flex items-center gap-4 justify-around ">
-            <form action="" required >
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="experiencia"
-                  value="principiante"
-                  className="accent-green-600"
-                  checked={formData.experiencia === 'principiante'}
-                  onChange={handleChange}
-                />
-                <span className="text-sm text-gray-700">Principiante</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="experiencia"
-                  value="intermedio"
-                  className="accent-green-600"
-                  checked={formData.experiencia === 'intermedio'}
-                  onChange={handleChange}
-                />
-                <span className="text-sm text-gray-700">Intermedio</span>
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="experiencia"
-                  value="avanzado"
-                  className="accent-green-600"
-                  checked={formData.experiencia === 'avanzado'}
-                  onChange={handleChange}
-                />
-                <span className="text-sm text-gray-700">Avanzado</span>
-              </label>
-            </form>
-
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <label className="flex items-center justify-center gap-2">
+              <input
+                type="radio"
+                name="experiencia"
+                value="principiante"
+                className="accent-green-600"
+                checked={formData.experiencia === 'principiante'}
+                onChange={handleChange}
+              />
+              <span className="text-sm text-gray-700">Principiante</span>
+            </label>
+            <label className="flex items-center justify-center gap-2">
+              <input
+                type="radio"
+                name="experiencia"
+                value="intermedio"
+                className="accent-green-600"
+                checked={formData.experiencia === 'intermedio'}
+                onChange={handleChange}
+              />
+              <span className="text-sm text-gray-700">Intermedio</span>
+            </label>
+            <label className="flex items-center justify-center gap-2">
+              <input
+                type="radio"
+                name="experiencia"
+                value="avanzado"
+                className="accent-green-600"
+                checked={formData.experiencia === 'avanzado'}
+                onChange={handleChange}
+              />
+              <span className="text-sm text-gray-700">Avanzado</span>
+            </label>
           </div>
         </div>
         <div>
