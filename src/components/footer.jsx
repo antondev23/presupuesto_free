@@ -30,7 +30,7 @@ function Footer() {
       <div className="border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-slate-400">
-            © {new Date().getFullYear()} PresupuestoApp. Todos los derechos reservados.
+            © {new Date().getFullYear()} PresupuestoApp. Todos los derechos reservados. Programado por Antonio Ortega.
           </p>
           <div className="flex items-center gap-4">
             <a href="https://www.instagram.com/anton.ort03/" className="text-slate-400 hover:text-white transition-colors">
@@ -40,7 +40,7 @@ function Footer() {
               LinkedIn
             </a>
             <a href="https://www.tiktok.com/@antonort23" className="text-slate-400 hover:text-white transition-colors">
-              tiktok
+              TikTok
             </a>
           </div>
         </div>
